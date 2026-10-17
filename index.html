@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>G. Lohith | Full Stack Developer Portfolio</title>
+<meta name="description" content="Portfolio of G. Lohith, aspiring full stack developer (MongoDB, Express, React, Node.js, AngularJS).">
+<style>
+:root{
+  --ink:#14262A; --muted:#4B6368; --paper:#F6FAF9; --card:#FFFFFF; --line:#D5E3E0;
+  --deep:#12353A; --teal:#1F7A72; --mint:#A7DCD2; --amber:#E0A03A;
+  --serif:Georgia,"Iowan Old Style","Palatino Linotype",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{--ink:#E7F1EF; --muted:#9DB6B2; --paper:#0E1F22; --card:#142B2F; --line:#244247; --teal:#5CC4B6;}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 var(--sans)}
+a{color:var(--teal)}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:5;background:var(--deep);color:#fff}
+header.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:54px}
+header.nav b{font-family:var(--serif);font-size:1.05rem}
+header.nav nav{display:flex;gap:16px;flex-wrap:wrap}
+header.nav nav a{color:#CFE9E4;text-decoration:none;font-size:.92rem}
+header.nav nav a:hover{color:#fff;text-decoration:underline}
+
+/* hero */
+.hero{background:var(--deep);color:#fff;padding:56px 0 64px}
+.hero h1{font-family:var(--serif);font-size:clamp(2.6rem,9vw,4.8rem);line-height:1.02;margin:0 0 6px;letter-spacing:-.01em}
+.hero .role{color:var(--mint);font-size:1.15rem;margin:0 0 22px}
+.hero ul{list-style:none;margin:0 0 26px;padding:0;max-width:640px}
+.hero li{padding:10px 0 10px 18px;border-left:3px solid var(--amber);margin-bottom:10px;color:#E3F1EE}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-block;padding:10px 18px;border-radius:6px;text-decoration:none;font-weight:600;border:2px solid var(--amber)}
+.btn.main{background:var(--amber);color:#1b1405}
+.btn.alt{color:#fff;border-color:#5E8C88}
+
+/* sections */
+section{padding:52px 0 8px}
+h2{font-family:var(--serif);font-size:1.75rem;margin:0 0 6px}
+.lead{color:var(--muted);margin:0 0 24px;max-width:62ch}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.skill{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+.skill h3{margin:0 0 8px;font-size:1rem}
+.skill.hl{border-color:var(--teal);box-shadow:inset 4px 0 0 var(--teal)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{background:rgba(31,122,114,.12);color:var(--ink);border-radius:4px;padding:3px 9px;font-size:.88rem}
+.skill small{display:block;margin-top:10px;color:var(--muted)}
+
+/* project walkthrough */
+.proj{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.proj header{padding:20px 22px 14px;border-bottom:1px solid var(--line)}
+.proj header h3{margin:0;font-family:var(--serif);font-size:1.45rem}
+.proj header p{margin:4px 0 0;color:var(--muted)}
+.tabs{display:flex;overflow-x:auto;background:var(--deep)}
+.tabs button{flex:1 0 auto;background:none;border:0;color:#BFDCD7;padding:13px 18px;font:600 .95rem var(--sans);cursor:pointer;border-bottom:3px solid transparent}
+.tabs button[aria-selected="true"]{color:#fff;border-bottom-color:var(--amber);background:rgba(255,255,255,.07)}
+.panel{padding:22px;min-height:260px}
+.panel[hidden]{display:none}
+.panel h4{margin:0 0 10px;font-size:1.1rem}
+.panel ul{margin:0;padding-left:20px}
+.panel li{margin-bottom:8px}
+.panel p{margin:0 0 12px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+
+/* architecture */
+.flow{display:flex;align-items:stretch;flex-wrap:wrap;gap:8px;margin:6px 0 16px}
+.node{flex:1 1 170px;border:2px solid var(--deep);border-radius:8px;padding:12px;background:var(--paper)}
+.node b{display:block}
+.node small{color:var(--muted)}
+.node.dark{background:var(--deep);color:#fff;border-color:var(--deep)}
+.node.dark small{color:var(--mint)}
+.node.gold{background:var(--amber);border-color:var(--amber);color:#1b1405}
+.node.gold small{color:#3d2e08}
+.join{align-self:center;color:var(--muted);font-size:.8rem;text-align:center;flex:0 0 auto}
+code,.mono{font-family:var(--mono);font-size:.88em}
+.tree{background:var(--deep);color:#DDF0EC;border-radius:8px;padding:14px 16px;font-family:var(--mono);font-size:.86rem;line-height:1.6;overflow-x:auto;white-space:pre;margin:0}
+
+/* second project + learning */
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin-top:16px}
+.card h3{margin:0 0 4px;font-family:var(--serif);font-size:1.25rem}
+.card .tag{color:var(--muted);font-size:.9rem;margin:0 0 10px}
+.card ul{margin:0 0 10px;padding-left:20px}
+.learn{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.learn div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.learn b{display:block}
+.learn span{color:var(--muted);font-size:.9rem}
+
+footer{margin-top:56px;background:var(--deep);color:#CFE9E4;padding:34px 0}
+footer h2{color:#fff}
+footer a{color:var(--amber)}
+footer p{margin:6px 0}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <b>G. Lohith</b>
+    <nav aria-label="Sections">
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="wrap">
+    <h1>G. Lohith</h1>
+    <p class="role">Full Stack Developer (fresher), B.Sc. IT, Coimbatore</p>
+    <ul>
+      <li>I build web apps from the database to the browser with MongoDB, Express, React and Node.js.</li>
+      <li>My main project, Urban Cart, is a live eCommerce store with login, cart, admin panel and a payment flow.</li>
+      <li>I am looking for a full stack developer role where I can keep shipping real features and learning.</li>
+    </ul>
+    <div class="btns">
+      <a class="btn main" href="#projects">See my project</a>
+      <a class="btn alt" href="https://github.com/lohith-2007">GitHub profile</a>
+    </div>
+  </div>
+</div>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Technical skills</h2>
+    <p class="lead">The MEAN stack is my base. I used React instead of Angular for Urban Cart, which makes that project MERN.</p>
+    <div class="skills">
+      <div class="skill hl">
+        <h3>MEAN / MERN stack</h3>
+        <div class="chips"><span>MongoDB</span><span>Express.js</span><span>Node.js</span><span>AngularJS</span><span>React (Urban Cart)</span></div>
+        <small>Full stack: database, REST API, UI, deployment.</small>
+      </div>
+      <div class="skill">
+        <h3>Frontend</h3>
+        <div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>AngularJS</span><span>React + Vite</span></div>
+      </div>
+      <div class="skill">
+        <h3>Backend and databases</h3>
+        <div class="chips"><span>Node.js</span><span>Express.js</span><span>JWT auth</span><span>MongoDB</span><span>MySQL</span></div>
+      </div>
+      <div class="skill">
+        <h3>Languages and core</h3>
+        <div class="chips"><span>C</span><span>C++</span><span>Java</span><span>Python</span><span>Data Structures and Algorithms</span></div>
+      </div>
+      <div class="skill">
+        <h3>Tools and deployment</h3>
+        <div class="chips"><span>Git</span><span>GitHub</span><span>Vercel</span><span>Render</span><span>MongoDB Atlas</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <p class="lead">Urban Cart is walked through in the order I present it: introduction, idea, features, architecture, GitHub.</p>
+
+    <article class="proj" aria-label="Urban Cart project walkthrough">
+      <header>
+        <h3>Urban Cart: MERN eCommerce store</h3>
+        <p>Live, deployed, and built end to end by me.</p>
+      </header>
+      <div class="tabs" role="tablist" aria-label="Project walkthrough">
+        <button role="tab" id="t0" aria-controls="p0" aria-selected="true">Introduction</button>
+        <button role="tab" id="t1" aria-controls="p1" aria-selected="false" tabindex="-1">Project idea</button>
+        <button role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1">Features</button>
+        <button role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1">Architecture</button>
+        <button role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1">GitHub</button>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p0" aria-labelledby="t0">
+        <h4>Summary in three lines</h4>
+        <ul>
+          <li>Urban Cart is a full stack eCommerce store built with MongoDB, Express, React and Node.js.</li>
+          <li>Customers browse products, log in, fill a cart and pay in test mode, while an admin manages the catalogue.</li>
+          <li>It runs live on Vercel (frontend), Render (API) and MongoDB Atlas (database).</li>
+        </ul>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1" hidden>
+        <h4>The problem</h4>
+        <p>Small sellers need one simple place to manage products, stock, customer accounts and payments. Customers want a fast catalogue, a safe login and a clear checkout.</p>
+        <h4>The idea</h4>
+        <p>A lightweight store with two sides: a storefront for customers and a protected admin page for the owner. Everything is connected through one REST API and one database.</p>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+        <div class="cols">
+          <div>
+            <h4>Customer</h4>
+            <ul>
+              <li>Product catalogue with search and category filters</li>
+              <li>Sign up and log in with JWT sessions</li>
+              <li>Shopping cart with live item count</li>
+              <li>Razorpay test-mode checkout, verified on the server</li>
+              <li>Order history under "My orders"</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Admin and platform</h4>
+            <ul>
+              <li>Admin-only page to add, edit and delete products</li>
+              <li>Role check on protected API routes</li>
+              <li>Passwords stored as hashes, never as plain text</li>
+              <li>Seed script for sample products and an admin account</li>
+              <li>Secrets kept in environment variables, not in GitHub</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+        <h4>How the pieces connect</h4>
+        <div class="flow">
+          <div class="node dark"><b>React + Vite</b><small>Frontend on Vercel</small></div>
+          <div class="join">REST + JSON<br>JWT header</div>
+          <div class="node dark"><b>Express + Node.js</b><small>API on Render</small></div>
+          <div class="join">Mongoose</div>
+          <div class="node gold"><b>MongoDB Atlas</b><small>users, products, orders</small></div>
+        </div>
+        <div class="flow">
+          <div class="node"><b>Razorpay (test mode)</b><small>The API creates the order, the browser opens checkout, then the API verifies the payment signature before saving the order.</small></div>
+        </div>
+        <p><b>Main routes:</b> <code>/api/auth</code>, <code>/api/products</code>, <code>/api/payment</code>, <code>/api/orders</code></p>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
+        <p><a href="https://github.com/lohith-2007/urban-cart-store-/tree/main/ecommerce">Source code on GitHub</a> (README has setup, deployment and API notes)</p>
+        <p><a href="https://urban-cart-store.vercel.app">Live demo on Vercel</a></p>
+<pre class="tree">ecommerce/
+  client/    React + Vite app
+  server/    Express API, models, seed script
+  README.md  setup, deploy, API list</pre>
+      </div>
+    </article>
+
+    <div class="card">
+      <h3>Phishing Awareness and Detector</h3>
+      <p class="tag">HTML, CSS, JavaScript. 2-member team project.</p>
+      <ul>
+        <li>Educational portal covering email, spear, whaling, smishing and vishing phishing, with prevention tips.</li>
+        <li>Phishing link detector that scores a URL's risk from its characteristics.</li>
+      </ul>
+      <a href="https://lohith-2007.github.io/Phishing-">Open the live project</a>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2>Experience and learning</h2>
+    <p class="lead">I am a second-year student, so my experience is academic projects and certified learning (CGPA 8.4, Kongunadu Arts and Science College).</p>
+    <div class="learn">
+      <div><b>MongoDB Skill Badges (4)</b><span>AI Agents, RAG Apps, Vector Search, MongoDB Basics. MongoDB, Jul 2026</span></div>
+      <div><b>Google AI Essentials</b><span>Google via Coursera, Aug 2025</span></div>
+      <div><b>Introduction to Cloud Computing</b><span>IBM via Coursera, Dec 2025</span></div>
+      <div><b>Python Scripting for DevOps</b><span>Coursera Project Network, Aug 2025</span></div>
+      <div><b>Programming with C Language</b><span>IIIT Bangalore via Coursera, Aug 2025</span></div>
+      <div><b>Programming with C++</b><span>Simplilearn via Coursera, Dec 2025</span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:g.lohith2007@gmail.com">g.lohith2007@gmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/lohith-2007">github.com/lohith-2007</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/lohith-undefined-988962422">linkedin.com/in/lohith-undefined-988962422</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  function show(i){
+    tabs.forEach(function(t,j){
+      var on=i===j;
+      t.setAttribute('aria-selected',on);
+      t.tabIndex=on?0:-1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden=!on;
+    });
+    tabs[i].focus();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){show(i)});
+    t.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight')show((i+1)%tabs.length);
+      if(e.key==='ArrowLeft')show((i+tabs.length-1)%tabs.length);
+    });
+  });
+})();
+</script>
+</body>
+</html>
